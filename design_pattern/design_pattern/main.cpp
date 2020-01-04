@@ -1,6 +1,7 @@
 #include "duck.h"
 
 int main() {
-	MallardDuck *m = new MallardDuck();
+	MallardDuck m = MallardDuck();
 	m.display();
+	m.performFly();
 }

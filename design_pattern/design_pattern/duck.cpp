@@ -1,6 +1,34 @@
 #include "duck.h"
 #include <iostream>
 
+void QuackBehavior::quack() {
+	std::cout << "QuackBehavior quack" << std::endl;
+}
+
+void Quack::quack() {
+	std::cout << "Quack quack" << std::endl;
+}
+
+void Squack::quack() {
+	std::cout << "Squack quack" << std::endl;
+}
+
+void MuteQuack::quack() {
+	std::cout << "MuteQuack quack" << std::endl;
+}
+
+void FlyBehavior::fly() {
+	std::cout << "FlyBehavior fly" << std::endl;
+}
+
+void FlyWithWings::fly() {
+	std::cout << "FlyWithWings fly" << std::endl;
+}
+
+void FlyNoWay::fly() {
+	std::cout << "FlyNoWay fly" << std::endl;
+}
+
 void DUCK::display() {
 	std::cout << "DUCK display" << std::endl;
 }
@@ -10,12 +38,13 @@ void DUCK::performQuack() {
 }
 
 void DUCK::performFly() {
-	flyBehavior.fly();
+	flyBehavior->fly();
 }
 
+
 MallardDuck::MallardDuck() {
-	QuackBehavior quackBehavior = Quack();
-	FlyBehavior flyBehavior = FlyWithWings();
+	flyBehavior = new FlyWithWings();
+	flyBehavior->fly();
 }
 
 void MallardDuck::display() {
