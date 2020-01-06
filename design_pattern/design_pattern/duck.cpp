@@ -29,12 +29,20 @@ void FlyNoWay::fly() {
 	std::cout << "FlyNoWay fly" << std::endl;
 }
 
+void DUCK::setFlyBehavior(FlyBehavior* fb) {
+	flyBehavior = fb;
+}
+
+void DUCK::setQuackBehavior(QuackBehavior* qb) {
+	quackBehavior = qb;
+}
+
 void DUCK::display() {
 	std::cout << "DUCK display" << std::endl;
 }
 
 void DUCK::performQuack() {
-	quackBehavior.quack();	// 鸭子对象不亲自处理呱呱叫，委托quackBehavior处理
+	quackBehavior->quack();	// 鸭子对象不亲自处理呱呱叫，委托quackBehavior处理
 }
 
 void DUCK::performFly() {
@@ -44,7 +52,7 @@ void DUCK::performFly() {
 
 MallardDuck::MallardDuck() {
 	flyBehavior = new FlyWithWings();
-	flyBehavior->fly();
+	quackBehavior = new Quack();
 }
 
 void MallardDuck::display() {

@@ -22,33 +22,35 @@ public:
 class QuackBehavior
 {
 public:
-	void quack();
+	virtual void quack();
 };
 
 class Quack :public QuackBehavior
 {
 public:
-	void quack(); // 实现鸭子呱呱叫
+	virtual void quack(); // 实现鸭子呱呱叫
 };
 
 class Squack :public QuackBehavior
 {
 public:
-	void quack(); // 实现橡皮鸭子吱吱叫
+	virtual void quack(); // 实现橡皮鸭子吱吱叫
 };
 
 class MuteQuack :public QuackBehavior
 {
 public:
-	void quack(); // 不会叫
+	virtual void quack(); // 不会叫
 };
 
 class DUCK
 {
 public:
 	FlyBehavior *flyBehavior;
-	QuackBehavior quackBehavior;
+	QuackBehavior *quackBehavior;
 
+	void setFlyBehavior(FlyBehavior*fb);
+	void setQuackBehavior(QuackBehavior*qb);
 	void performQuack();
 	void swim();
 	void display();
