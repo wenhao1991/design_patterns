@@ -1,5 +1,6 @@
 #include "duck.h"
 #include "weather_data.h"
+#include "decorators.h"
 
 void testDuck() {
 	MallardDuck m = MallardDuck();
@@ -20,8 +21,18 @@ void testWeatherData() {
 
 }
 
+void testDecorators() {
+	Beverage* d = new DarkRoast();
+	Beverage* milk = new Milk(d);
+	Beverage* mocha = new Mocha(d);
+	std::cout << milk->getDescription() << ',' << milk->cost() << std::endl;
+	std::cout << mocha->getDescription() << ',' << mocha->cost() << std::endl;
+	mocha = new Mocha(milk);
+	std::cout << mocha->getDescription() << ',' << mocha->cost() << std::endl;
+}
+
 int main() {
 	//testDuck();
-
-	testWeatherData();
+	//testWeatherData();
+	testDecorators();
 }
